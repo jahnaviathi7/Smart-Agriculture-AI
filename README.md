@@ -1,294 +1,448 @@
 # 🌱 Smart Agriculture AI
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge\&logo=python\&logoColor=white)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange?style=for-the-badge)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge\&logo=streamlit\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge\&logo=github)
+> An AI-powered agriculture application for detecting plant diseases from leaf images and providing actionable treatment and preventive guidance.
 
-**Smart Agriculture AI** is an AI and Machine Learning based agriculture assistance system designed to help farmers make better decisions using data-driven recommendations.
-
-The system combines multiple agricultural intelligence modules including crop recommendation, crop yield prediction, irrigation recommendation, fertilizer recommendation, weather analysis, plant disease detection, and AI-powered farmer assistance.
-
----
-
-## 📑 Table of Contents
-
-* [✨ Features](#-features)
-* [🧠 System Architecture](#-system-architecture)
-* [🌾 Agriculture Modules](#-agriculture-modules)
-* [📂 Repository Structure](#-repository-structure)
-* [🚀 Quickstart & Installation](#-quickstart--installation)
-* [📊 Machine Learning Models](#-machine-learning-models)
-* [🔬 Technical Pipeline](#-technical-pipeline)
-* [🎯 Objectives](#-objectives)
-* [🛣️ Roadmap & Improvements](#️-roadmap--improvements)
-* [👩‍💻 Author & License](#-author--license)
+[![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)](https://streamlit.io/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-Deep%20Learning-orange?logo=tensorflow)](https://www.tensorflow.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green?logo=opencv)](https://opencv.org/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/)
 
 ---
 
-## ✨ Features
+## 🚀 Live Demo
 
-* **🌾 Crop Recommendation:** Recommends suitable crops based on agricultural and environmental parameters.
-* **📊 Crop Yield Prediction:** Predicts expected crop yield using machine learning techniques.
-* **💧 Irrigation Recommendation:** Classifies irrigation requirements into Low, Medium, and High.
-* **🧪 Fertilizer Recommendation:** Provides fertilizer recommendations based on crop and soil information.
-* **🌦️ Weather Analysis:** Analyzes weather information to support agricultural decision-making.
-* **🍃 Plant Disease Detection:** Identifies plant diseases from plant leaf images.
-* **🤖 Agriculture AI Chatbot:** Provides AI-based assistance for agriculture-related questions.
-* **📚 RAG Knowledge Assistant:** Provides agriculture-related knowledge using a retrieval-based approach.
-* **📈 Farmer Dashboard:** Provides a centralized interface for accessing agricultural predictions and recommendations.
+### 🌐 Try the Application
+
+👉 **[Smart Agriculture AI – Live Demo](https://smart-agriculture-ai-n4x5u3fdh6s2fys5vify5p.streamlit.app/)**
+
+The application allows users to upload a plant leaf image and receive an AI-based disease classification result along with confidence information and recommended preventive/treatment guidance.
 
 ---
 
-## 🧠 System Architecture
+## 📌 Project Overview
 
-Smart Agriculture AI follows a modular machine learning architecture:
+Agriculture plays an important role in food production and the economy. Plant diseases can significantly affect crop productivity when they are not identified at an early stage.
+
+**Smart Agriculture AI** is an AI-powered application designed to assist farmers and agricultural users in identifying plant diseases from leaf images.
+
+The system uses **Convolutional Neural Networks (CNNs)** and **transfer learning** to analyze uploaded leaf images and classify them into supported disease categories.
+
+The application provides a simple **Streamlit-based web interface**, making AI-based plant disease detection accessible through a browser.
+
+---
+
+## 🎯 Problem Statement
+
+Farmers often struggle to identify crop diseases early and accurately, leading to crop loss and reduced productivity.
+
+---
+
+## 💡 Proposed Solution
+
+Smart Agriculture AI provides an automated image-based plant disease detection system.
+
+The user uploads a leaf image, which is:
+
+1. Preprocessed
+2. Analyzed using a trained deep learning model
+3. Classified into a disease category
+4. Assigned a confidence score
+5. Used to provide treatment and preventive guidance
+
+---
+
+## ✨ Key Features
+
+- 🌿 **Plant Disease Detection**
+- 📷 **Leaf Image Upload**
+- 🤖 **CNN-based Image Classification**
+- 🧠 **Transfer Learning**
+- 📊 **Disease Classification with Confidence Score**
+- 🌾 **Multi-Crop Disease Support**
+- 💊 **Treatment Recommendations**
+- 🛡️ **Preventive Measures**
+- 👨‍🌾 **Farmer-Friendly Interface**
+- ⚡ **Fast Image Analysis**
+- 🌐 **Web-Based Streamlit Application**
+- ☁️ **Cloud Deployment**
+
+---
+
+## 🏗️ System Architecture
 
 ```text
-┌────────────────────────────────────────────────────────┐
-│                  Farmer / User Input                   │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│              Data Preprocessing & Validation            │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│                Agricultural AI Modules                  │
-│                                                        │
-│ Crop Recommendation │ Yield Prediction                 │
-│ Irrigation          │ Fertilizer Recommendation        │
-│ Disease Detection   │ Weather Analysis                 │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│              Prediction / Recommendation               │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│        AI Chatbot / Knowledge Assistant / Dashboard    │
-└────────────────────────────────────────────────────────┘
-```
+                    ┌─────────────────────┐
+                    │       User          │
+                    │     / Farmer        │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Upload Leaf Image │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Image Preprocess  │
+                    │ Resize / Normalize  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   CNN / Transfer    │
+                    │      Learning       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Disease Prediction  │
+                    │   + Confidence      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+              ┌────────────────┴────────────────┐
+              │                                 │
+              ▼                                 ▼
+      ┌──────────────────┐             ┌──────────────────┐
+      │ Treatment Advice │             │ Preventive Tips  │
+      └──────────────────┘             └──────────────────┘
+🔄 Project Workflow
+Leaf Image
+    ↓
+Image Upload
+    ↓
+Image Preprocessing
+    ↓
+Feature Extraction
+    ↓
+CNN Model
+    ↓
+Disease Classification
+    ↓
+Confidence Score
+    ↓
+Treatment & Preventive Guidance
+    ↓
+Display Result
+🧠 Machine Learning Methodology
 
----
+The project uses deep learning-based image classification.
 
-## 🌾 Agriculture Modules
+1. Image Collection
 
-### 1. Crop Recommendation
+Plant leaf images are used as input data for training and validation.
 
-Uses agricultural and environmental parameters to recommend a suitable crop for cultivation.
+2. Image Preprocessing
 
-### 2. Crop Yield Prediction
+The input images undergo preprocessing operations such as:
 
-Uses historical agricultural data and machine learning techniques to estimate expected crop yield.
+Image resizing
+Pixel normalization
+Data augmentation
+RGB image processing
+3. Feature Extraction
 
-### 3. Irrigation Recommendation
+The CNN learns important visual characteristics from leaf images, including patterns associated with plant diseases.
 
-Analyzes relevant soil and environmental conditions and classifies irrigation requirements as:
+4. Transfer Learning
 
-* Low
-* Medium
-* High
+Pre-trained deep learning architectures such as ResNet50 / VGG16 can be used as feature extraction backbones.
 
-### 4. Fertilizer Recommendation
+5. Classification
 
-Provides fertilizer recommendations using crop and soil-related information.
+The extracted features are passed through dense layers and a Softmax classification layer to identify the disease category.
 
-### 5. Weather Analysis
+6. Prediction
 
-Analyzes weather conditions to provide useful agricultural insights and support farming decisions.
+The system generates:
 
-### 6. Plant Disease Detection
+Predicted disease
+Confidence score
+Recommended action
+📊 Dataset
 
-Uses plant leaf images and machine learning/deep learning techniques to identify possible plant diseases.
+The project uses the PlantVillage dataset for plant disease classification.
 
-### 7. Agriculture AI Chatbot
+The project documentation specifies:
 
-Provides AI-based responses to agriculture-related questions and assists farmers with farming guidance.
+Attribute	Details
+Dataset	PlantVillage
+Images	54,306
+Crop Species	14
+Diseases	26
+Split	80% Training / 20% Validation
+Sampling	Stratified
 
-### 8. RAG Knowledge Assistant
+The project presentation reports classification performance of 99%+ accuracy for the developed model.
 
-Provides agriculture-related information by retrieving relevant knowledge and generating useful responses.
+Note: Reported accuracy depends on the dataset, preprocessing, model configuration, and evaluation procedure.
 
-### 9. Farmer Dashboard
-
-Provides a centralized interface through which users can access the different agricultural AI modules.
-
----
-
-## 📂 Repository Structure
-
-```text
+🛠️ Technologies Used
+Programming Language
+Python
+Machine Learning / Deep Learning
+TensorFlow
+Keras
+Scikit-learn
+Computer Vision
+OpenCV
+Pillow
+NumPy
+Data Processing
+Pandas
+NumPy
+Web Application
+Streamlit
+Database
+SQLite
+Development Tools
+Visual Studio Code
+Jupyter Notebook
+Version Control
+Git
+GitHub
+Deployment
+Streamlit Community Cloud
+📂 Project Structure
 Smart-Agriculture-AI/
 │
-├── datasets/
+├── app.py
+│
+├── data/
 │   ├── crop_recommendation.csv
-│   ├── crop_yield.csv
-│   ├── irrigation_dataset.csv
-│   └── fertilizer_dataset.csv
+│   └── crop_yield.csv
 │
 ├── models/
-│   ├── crop_recommendation_model.pkl
-│   ├── yield_model.pkl
-│   ├── irrigation_model.pkl
-│   └── fertilizer_model.pkl
+│   └── plant_disease_mobilenetv2_38_classes.keras
 │
-├── notebooks/
+├── notebook/
 │   ├── 01_crop_recommendation.ipynb
 │   ├── 02_yield_prediction.ipynb
 │   └── 03_disease_detection.ipynb
 │
-├── app.py
+├── utils/
+│
 ├── requirements.txt
+│
 ├── README.md
+│
 └── .gitignore
-```
 
----
+Update the folder names above if your GitHub repository uses a different final structure.
 
-## 🚀 Quickstart & Installation
+🖥️ Application Modules
+🌱 Crop Recommendation
 
-### 1. Prerequisites
+Recommends suitable crops based on agricultural input parameters.
 
-* Python 3.10+
-* pip
-* Git
-* VS Code or Jupyter Notebook
+📈 Crop Yield Prediction
 
-### 2. Clone Repository
+Uses agricultural information to estimate crop yield.
 
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+🍃 Plant Disease Detection
+
+Analyzes leaf images using a deep learning model and predicts the corresponding disease category.
+
+💧 Irrigation Recommendation
+
+Provides irrigation recommendations based on relevant agricultural and environmental parameters.
+
+🧪 Fertilizer Recommendation
+
+Provides fertilizer recommendations according to agricultural input conditions.
+
+🌦️ Weather Analysis
+
+Provides weather-related information and agricultural advisory support.
+
+🤖 Agriculture AI Chatbot
+
+Provides an AI-based conversational interface for agriculture-related questions.
+
+📸 How to Use
+Step 1 — Open the Application
+
+Visit the live application:
+
+Smart Agriculture AI
+
+Step 2 — Upload an Image
+
+Select a clear image of a plant leaf.
+
+Step 3 — Image Processing
+
+The application processes the uploaded image before sending it to the trained model.
+
+Step 4 — View Prediction
+
+The model displays the predicted disease category and confidence information.
+
+Step 5 — Follow Recommendations
+
+Use the displayed treatment and preventive guidance as an initial agricultural reference.
+
+⚙️ Installation
+1. Clone the Repository
+git clone https://github.com/jahnaviathi7/Smart-Agriculture-AI.git
+2. Navigate to the Project
 cd Smart-Agriculture-AI
-```
-
-### 3. Create Virtual Environment
-
-**Windows:**
-
-```bash
+3. Create a Virtual Environment
 python -m venv venv
+4. Activate the Environment
+Windows
 venv\Scripts\activate
-```
-
-**Linux / macOS:**
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 4. Install Dependencies
-
-```bash
+5. Install Dependencies
 pip install -r requirements.txt
-```
-
----
-
-## ▶️ Run the Application
-
-Launch the Streamlit application:
-
-```bash
+6. Run the Application
 streamlit run app.py
-```
 
-The application will open in your default web browser.
+The application will open in your browser.
 
----
+📦 Requirements
 
-## 📊 Machine Learning Models
+Example requirements.txt:
 
-### Crop Recommendation
+streamlit
+tensorflow
+numpy
+pandas
+opencv-python-headless
+Pillow
+scikit-learn
+joblib
 
-Uses agricultural parameters to recommend an appropriate crop.
+Make sure the requirements match the packages imported by the final application before deployment.
 
-### Crop Yield Prediction
+☁️ Deployment
 
-Predicts expected agricultural yield using trained regression models.
+The application is deployed using Streamlit Community Cloud.
 
-### Irrigation Recommendation
+Deployment Flow
+GitHub Repository
+       ↓
+Streamlit Community Cloud
+       ↓
+Application Build
+       ↓
+Dependency Installation
+       ↓
+Model Loading
+       ↓
+Public Web Application
+Live Application
 
-Classifies irrigation requirements into Low, Medium, and High categories.
+👉 Open Smart Agriculture AI
 
-### Fertilizer Recommendation
+🧪 Testing
 
-Recommends suitable fertilizers based on available crop and soil information.
+The application can be tested using different plant leaf images.
 
-### Plant Disease Detection
+Testing Areas
+Test Case	Expected Result
+Upload valid leaf image	Image is accepted
+Upload supported disease image	Disease is predicted
+View prediction	Disease name is displayed
+Check confidence	Confidence information is displayed
+View recommendations	Guidance is displayed
+Access application through browser	Application loads successfully
+📈 Expected Outcomes
 
-Analyzes plant leaf images to identify possible diseases.
+The system aims to:
 
----
+Detect plant diseases automatically.
+Reduce dependence on manual visual inspection.
+Support early identification of crop diseases.
+Provide disease classification results.
+Provide treatment and preventive guidance.
+Make AI-based agricultural assistance accessible through a web interface.
+✅ Advantages
+Automated disease detection
+Reduces manual inspection effort
+Fast image-based analysis
+Supports multiple crop disease categories
+Easy-to-use interface
+Accessible through a web browser
+Can be deployed as a cloud application
+Provides actionable agricultural guidance
+⚠️ Limitations
+Prediction quality depends on image quality.
+The model can only classify diseases represented in its training data.
+Real-world field images may differ from controlled dataset images.
+Internet connectivity may be required for the deployed application.
+AI predictions should be treated as decision-support information rather than a replacement for professional agricultural diagnosis.
+🔮 Future Scope
 
-## 🔬 Technical Pipeline
+Future improvements can include:
 
-### 1. Data Collection
+📱 Android/iOS mobile application
+📷 Real-time camera-based disease detection
+🌍 GPS-based agricultural recommendations
+🌦️ Integration with real-time weather APIs
+🛰️ Satellite and drone-based crop monitoring
+📊 Advanced farmer analytics dashboard
+🌱 IoT-based soil monitoring
+💧 Automated smart irrigation
+🗣️ Regional-language voice assistant
+🤖 Advanced AI agricultural assistant
+📚 RAG-based agricultural knowledge system
+🔄 Continuous model improvement using new field images
+🎓 Academic Project Information
 
-Agricultural datasets are collected for crop, yield, irrigation, fertilizer, weather, and plant disease analysis.
+Project Title:
+Smart Agriculture AI
 
-### 2. Data Preprocessing
+Domain:
+Artificial Intelligence & Machine Learning
 
-The data is cleaned, transformed, and prepared for machine learning.
+Technologies:
+Python, TensorFlow, CNN, Transfer Learning, OpenCV, Streamlit, SQLite
 
-### 3. Feature Engineering
+Application Type:
+AI-powered Web Application
 
-Relevant agricultural and environmental features are selected and prepared for model training.
+Deployment:
+Streamlit Community Cloud
 
-### 4. Model Training
+👥 Team Members
+Role	Name
+Team Leader	G. Prathyusha
+Team Member	A. Jahnavi
+Team Member	G. Geethika
+Team Member	R. Thanu Sree
+Project Guide
 
-Machine learning models are trained independently for different agricultural prediction and recommendation tasks.
+Thribhhuvan Reddy M
 
-### 5. Model Evaluation
+📚 References
+PlantVillage Dataset
+TensorFlow / Keras Documentation
+OpenCV Documentation
+Scikit-learn Documentation
+Streamlit Documentation
+🌟 Project Status
+Project: Smart Agriculture AI
+Status: Deployed
+Platform: Streamlit
+Domain: Artificial Intelligence & Agriculture
+⭐ Support
 
-Models are evaluated using appropriate metrics depending on whether the task is classification or regression.
+If you find this project useful for learning or academic purposes, consider giving the repository a ⭐ on GitHub.
 
-### 6. Prediction
+🌱 Smart Agriculture AI
 
-The trained models generate predictions or recommendations based on user input.
+Using Artificial Intelligence to support smarter and more accessible agriculture.
 
-### 7. Application Integration
 
-The trained models are integrated into the Streamlit-based application and farmer dashboard.
+### One important correction before you paste this
 
----
+Your actual GitHub repository should be:
 
-## 🎯 Objectives
+:contentReference[oaicite:0]{index=0}
 
-* Help farmers make data-driven agricultural decisions.
-* Recommend suitable crops based on agricultural conditions.
-* Predict crop yield using machine learning.
-* Improve irrigation and fertilizer management.
-* Assist with plant disease identification.
-* Provide weather-based agricultural insights.
-* Provide AI-powered farming assistance.
+And your live application is:
 
----
+:contentReference[oaicite:1]{index=1}
 
-## 🛣️ Roadmap & Improvements
-
-* **IoT Integration:** Connect real-time soil and environmental sensors.
-* **Real-Time Weather:** Integrate live weather and forecast information.
-* **Multilingual Support:** Provide farmer assistance in regional languages.
-* **Mobile Application:** Develop an Android/mobile version.
-* **Advanced Disease Detection:** Improve image-based plant disease recognition.
-* **Satellite Data:** Integrate satellite and remote-sensing information.
-* **Personalized Recommendations:** Generate recommendations based on individual farm conditions.
-
----
-
-## 👩‍💻 Author & License
-
-Developed by **Athi Jahnavi**
-
-* 🎓 B.Tech Computer Science & Information Technology
-* 💻 AI & Machine Learning Project
-
-### 📄 License
-
-This project is developed for academic and educational purposes.
+**For your GitHub README, I recommend adding 2–3 screenshots of your actual Streamlit application** unde
