@@ -405,15 +405,6 @@ AI-powered Web Application
 Deployment:
 Streamlit Community Cloud
 
-👥 Team Members
-Role	Name
-Team Leader	G. Prathyusha
-Team Member	A. Jahnavi
-Team Member	G. Geethika
-Team Member	R. Thanu Sree
-Project Guide
-
-Thribhhuvan Reddy M
 
 📚 References
 PlantVillage Dataset
@@ -426,23 +417,6 @@ Project: Smart Agriculture AI
 Status: Deployed
 Platform: Streamlit
 Domain: Artificial Intelligence & Agriculture
-⭐ Support
-
-If you find this project useful for learning or academic purposes, consider giving the repository a ⭐ on GitHub.
-
-🌱 Smart Agriculture AI
-
-Using Artificial Intelligence to support smarter and more accessible agriculture.
 
 
-### One important correction before you paste this
 
-Your actual GitHub repository should be:
-
-:contentReference[oaicite:0]{index=0}
-
-And your live application is:
-
-:contentReference[oaicite:1]{index=1}
-
-**For your GitHub README, I recommend adding 2–3 screenshots of your actual Streamlit application** unde
